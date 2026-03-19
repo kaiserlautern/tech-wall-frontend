@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import MessageForm from './components/MessageForm';
 import MessageList from './components/MessageList';
 
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 function App() {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -9,7 +11,7 @@ function App() {
 
   const fetchMessages = async () => {
     try {
-      const res = await fetch('/api/messages');
+      const res = await fetch(`${API_URL}/api/messages`);
       if (!res.ok) throw new Error('Failed to fetch messages');
       const data = await res.json();
       setMessages(data);
@@ -31,7 +33,7 @@ function App() {
 
   const handleLike = async (id) => {
     try {
-      const res = await fetch(`/api/messages/${id}/like`, { method: 'POST' });
+      const res = await fetch(`${API_URL}/api/messages/${id}/like`, { method: 'POST' });
       if (!res.ok) throw new Error('Failed to like message');
       const updatedMsg = await res.json();
       

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Send } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 const MessageForm = ({ onMessagePosted }) => {
   const [text, setText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -11,7 +13,7 @@ const MessageForm = ({ onMessagePosted }) => {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch('/api/messages', {
+      const res = await fetch(`${API_URL}/api/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text }),
