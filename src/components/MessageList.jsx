@@ -32,7 +32,7 @@ const MessageList = ({ messages, onLike }) => {
               onClick={() => onLike(msg.id)}
             >
               <Heart
-                size={20}
+                size={32}
                 className="like-icon"
                 fill={msg.likes > 0 ? 'currentColor' : 'none'}
               />
