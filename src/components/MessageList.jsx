@@ -15,7 +15,7 @@ const MessageList = ({ messages, onLike }) => {
       {messages.map((msg) => (
         <div key={msg.id} className="message-card">
           <div className="message-text">{msg.text}</div>
-          
+
           <div className="message-footer">
             <span className="message-date">
               {new Date(msg.created_at).toLocaleString(undefined, {
@@ -26,15 +26,15 @@ const MessageList = ({ messages, onLike }) => {
                 minute: '2-digit'
               })}
             </span>
-            
-            <button 
+
+            <button
               className={`like-btn ${msg.likes > 0 ? 'liked' : ''}`}
               onClick={() => onLike(msg.id)}
             >
-              <Heart 
-                size={18} 
+              <Heart
+                size={20}
                 className="like-icon"
-                fill={msg.likes > 0 ? 'currentColor' : 'none'} 
+                fill={msg.likes > 0 ? 'currentColor' : 'none'}
               />
               <span>{msg.likes}</span>
             </button>
